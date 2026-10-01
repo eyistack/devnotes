@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DevNotes — Notes, Code & More</title>
+<meta name="description" content="A lightweight developer notebook with markdown, code runner, encryption, and stats">
+<meta property="og:title" content="DevNotes — Notes, Code & More">
+<meta property="og:description" content="A lightweight developer notebook with markdown, code runner, encryption, and stats">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Source+Code+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Google+Sans:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23191919' stroke='%232f2f2f' stroke-width='4'/%3E%3Ctext x='50' y='68' font-size='46' font-weight='bold' fill='%23e6e6e5' text-anchor='middle' font-family='monospace'%3E%26lt;/%26gt;%3C/text%3E%3C/svg%3E">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#191919">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="DevNotes">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark">
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+<symbol id="i-file-text" viewBox="0 0 24 24"><path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6z"/><path d="M9 3v3"/><path d="M15 3v3"/><line x1="8" x2="16" y1="10" y2="10"/><line x1="8" x2="16" y1="14" y2="14"/><line x1="8" x2="12" y1="18" y2="18"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24"><line x1="12" x2="12" y1="17" y2="22"/><path d="M5 17h14v-2l-2-2V5h1V3H6v2h1v8l-2 2v2z"/></symbol>
+<symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M19 6v14c0 1.1-.9 2-2 2H7c-1.1 0-2-.9-2-2V6"/><path d="M8 6V4c0-1.1.9-2 2-2h4c1.1 0 2 .9 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></symbol>
+<symbol id="i-bar-chart" viewBox="0 0 24 24"><path d="M3 3v18h18"/><rect x="7" y="11" width="3" height="6" rx="1"/><rect x="12" y="7" width="3" height="10" rx="1"/><rect x="17" y="13" width="3" height="4" rx="1"/></symbol>
+<symbol id="i-menu" viewBox="0 0 24 24"><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/></symbol>
+<symbol id="i-panel-left" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><line x1="9" x2="9" y1="3" y2="21"/></symbol>
+<symbol id="i-panel-left-close" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><line x1="9" x2="9" y1="3" y2="21"/><path d="m16 15-3-3 3-3"/></symbol>
+<symbol id="i-panel-left-open" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><line x1="9" x2="9" y1="3" y2="21"/><path d="m14 9 3 3-3 3"/></symbol>
+<symbol id="i-sliders" viewBox="0 0 24 24"><line x1="4" x2="4" y1="21" y2="14"/><line x1="4" x2="4" y1="10" y2="3"/><line x1="12" x2="12" y1="21" y2="12"/><line x1="12" x2="12" y1="8" y2="3"/><line x1="20" x2="20" y1="21" y2="16"/><line x1="20" x2="20" y1="12" y2="3"/><line x1="2" x2="6" y1="14" y2="14"/><line x1="10" x2="14" y1="8" y2="8"/><line x1="18" x2="22" y1="16" y2="16"/></symbol>
+<symbol id="i-check-square" viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></symbol>
+<symbol id="i-git-compare" viewBox="0 0 24 24"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h3a2 2 0 0 1 2 2v7"/><path d="M11 18H8a2 2 0 0 1-2-2V9"/></symbol>
+<symbol id="i-timer" viewBox="0 0 24 24"><line x1="10" x2="14" y1="2" y2="2"/><line x1="12" x2="15" y1="14" y2="11"/><circle cx="12" cy="14" r="8"/></symbol>
+<symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></symbol>
+<symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+<symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></symbol>
+<symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+<symbol id="i-bookmark" viewBox="0 0 24 24"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></symbol>
+<symbol id="i-folder" viewBox="0 0 24 24"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></symbol>
+<symbol id="i-folder-open" viewBox="0 0 24 24"><path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2"/></symbol>
+<symbol id="i-folder-plus" viewBox="0 0 24 24"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/><line x1="12" x2="12" y1="10" y2="16"/><line x1="9" x2="15" y1="13" y2="13"/></symbol>
+<symbol id="i-upload" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></symbol>
+<symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></symbol>
+<symbol id="i-archive" viewBox="0 0 24 24"><rect width="20" height="5" x="2" y="3" rx="1"/><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/><line x1="10" x2="14" y1="12" y2="12"/></symbol>
+<symbol id="i-settings" viewBox="0 0 24 24"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></symbol>
+<symbol id="i-copy" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></symbol>
+<symbol id="i-printer" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></symbol>
+<symbol id="i-clipboard" viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></symbol>
+<symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></symbol>
+<symbol id="i-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+<symbol id="i-unlock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></symbol>
+<symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+<symbol id="i-edit" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></symbol>
+<symbol id="i-columns" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M12 3v18"/></symbol>
+<symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></symbol>
+<symbol id="i-list" viewBox="0 0 24 24"><line x1="8" x2="21" y1="6" y2="6"/><line x1="8" x2="21" y1="12" y2="12"/><line x1="8" x2="21" y1="18" y2="18"/><line x1="3" x2="3.01" y1="6" y2="6"/><line x1="3" x2="3.01" y1="12" y2="12"/><line x1="3" x2="3.01" y1="18" y2="18"/></symbol>
+<symbol id="i-list-ordered" viewBox="0 0 24 24"><line x1="10" x2="21" y1="6" y2="6"/><line x1="10" x2="21" y1="12" y2="12"/><line x1="10" x2="21" y1="18" y2="18"/><path d="M4 6h1v4"/><path d="M4 10h2"/><path d="M6 18H4c0-1 2-2 2-3s-1-1.5-2-1"/></symbol>
+<symbol id="i-quote" viewBox="0 0 24 24"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></symbol>
+<symbol id="i-code" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></symbol>
+<symbol id="i-play" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"/></symbol>
+<symbol id="i-pause" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></symbol>
+<symbol id="i-rotate-ccw" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></symbol>
+<symbol id="i-external-link" viewBox="0 0 24 24"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+<symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+<symbol id="i-undo" viewBox="0 0 24 24"><path d="M3 7v6h6"/><path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13"/></symbol>
+<symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="16" y2="12"/><line x1="12" x2="12.01" y1="8" y2="8"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" x2="16.65" y1="21" y2="16.65"/></symbol>
+<symbol id="i-flame" viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></symbol>
+<symbol id="i-book-open" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></symbol>
+<symbol id="i-zap" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+<symbol id="i-bug" viewBox="0 0 24 24"><path d="m8 2 1.88 1.88"/><path d="M14.12 3.88 16 2"/><path d="M9 7.13v-1a3.003 3.003 0 1 1 6 0v1"/><path d="M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6"/><path d="M12 20v-9"/><path d="M6.53 9C4.6 8.8 3 7.1 3 5"/><path d="M6 13H2"/><path d="M3 21c0-2.1 1.7-3.9 3.8-4"/><path d="M20.97 5c0 2.1-1.6 3.8-3.5 4"/><path d="M22 13h-4"/><path d="M17.2 17c2.1.1 3.8 1.9 3.8 4"/></symbol>
+<symbol id="i-calendar" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></symbol>
+<symbol id="i-hash" viewBox="0 0 24 24"><line x1="4" x2="20" y1="9" y2="9"/><line x1="4" x2="20" y1="15" y2="15"/><line x1="10" x2="8" y1="3" y2="21"/><line x1="16" x2="14" y1="3" y2="21"/></symbol>
+<symbol id="i-tag" viewBox="0 0 24 24"><path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z"/><circle cx="7" cy="7" r=".5" fill="currentColor"/></symbol>
+<symbol id="i-palette" viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></symbol>
+<symbol id="i-type" viewBox="0 0 24 24"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" x2="15" y1="20" y2="20"/><line x1="12" x2="12" y1="4" y2="20"/></symbol>
+<symbol id="i-ruler" viewBox="0 0 24 24"><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z"/><path d="m14.5 12.5 2-2"/><path d="m11.5 9.5 2-2"/><path d="m8.5 6.5 2-2"/><path d="m17.5 15.5 2-2"/></symbol>
+<symbol id="i-save" viewBox="0 0 24 24"><path d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7"/><path d="M7 3v4a1 1 0 0 0 1 1h7"/></symbol>
+<symbol id="i-network" viewBox="0 0 24 24"><circle cx="12" cy="5" r="3"/><circle cx="5" cy="19" r="3"/><circle cx="19" cy="19" r="3"/><line x1="8.59" x2="6.41" y1="13.51" y2="16.49"/><line x1="15.41" x2="17.59" y1="13.51" y2="16.49"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="5" x2="19" y1="12" y2="12"/></symbol>
+<symbol id="i-maximize" viewBox="0 0 24 24"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" x2="14" y1="3" y2="10"/><line x1="3" x2="10" y1="21" y2="14"/></symbol>
+<symbol id="i-minimize" viewBox="0 0 24 24"><polyline points="4 14 10 14 10 20"/><polyline points="20 10 14 10 14 4"/><line x1="14" x2="21" y1="10" y2="3"/><line x1="3" x2="10" y1="21" y2="14"/></symbol>
+<symbol id="i-command" viewBox="0 0 24 24"><path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></symbol>
+<symbol id="i-keyboard" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="M6 8h.01"/><path d="M10 8h.01"/><path d="M14 8h.01"/><path d="M18 8h.01"/><path d="M6 12h.01"/><path d="M10 12h.01"/><path d="M14 12h.01"/><path d="M18 12h.01"/><path d="M8 16h8"/></symbol>
+<symbol id="i-layers" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></symbol>
+<symbol id="i-sparkles" viewBox="0 0 24 24"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></symbol>
+<symbol id="i-chevron-right" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></symbol>
+</svg>
+
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="logo-area" onclick="goHome()" title="DevNotes - Go to All Notes">
+      <div class="logo">&lt;/&gt;</div>
+      <div class="logo-text">
+        <h1>DevNotes</h1>
+        <p>Notes &amp; Code Runner</p>
+      </div>
+    </div>
+    <button class="sidebar-collapse-btn" id="sidebarCollapseBtn" onclick="toggleSidebarCollapse(event)" title="Collapse Sidebar (Cmd/Ctrl+B)">
+      <svg class="ic"><use href="#i-panel-left-close"/></svg>
+    </button>
+  </div>
+  <div class="sidebar-section">
+    <button class="sb active" data-filter="all" onclick="setFilter('all')" title="All Notes"><span class="ico"><svg class="ic"><use href="#i-file-text"/></svg></span><span class="sb-label">All Notes</span><span class="cnt" id="cnt-all">0</span></button>
+    <button class="sb" data-filter="favorites" onclick="setFilter('favorites')" title="Favorites"><span class="ico"><svg class="ic"><use href="#i-heart"/></svg></span><span class="sb-label">Favorites</span><span class="cnt" id="cnt-fav">0</span></button>
+    <button class="sb" data-filter="pinned" onclick="setFilter('pinned')" title="Pinned"><span class="ico"><svg class="ic"><use href="#i-pin"/></svg></span><span class="sb-label">Pinned</span><span class="cnt" id="cnt-pin">0</span></button>
+    <button class="sb" data-filter="trash" onclick="setFilter('trash')" title="Trash"><span class="ico"><svg class="ic"><use href="#i-trash"/></svg></span><span class="sb-label">Trash</span><span class="cnt" id="cnt-trash">0</span></button>
+    <button class="sb" onclick="openGraphView()" title="Mind Map / Graph View (Cmd+G)"><span class="ico"><svg class="ic"><use href="#i-network"/></svg></span><span class="sb-label">Mind Map / Graph</span></button>
+    <button class="sb" data-filter="stats" onclick="openStats()" title="Statistics"><span class="ico"><svg class="ic"><use href="#i-bar-chart"/></svg></span><span class="sb-label">Statistics</span></button>
+  </div>
+  <div class="collapsed-quick-nav">
+    <button class="sb" onclick="expandSidebar();showFolderModal()" title="Folders (Expand to view)"><span class="ico"><svg class="ic"><use href="#i-folder"/></svg></span></button>
+    <button class="sb" onclick="expandSidebar()" title="Tags (Expand to view)"><span class="ico"><svg class="ic"><use href="#i-tag"/></svg></span></button>
+  </div>
+  <div class="sidebar-scroll">
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Folders<button onclick="showFolderModal()" title="New Folder"><svg class="ic"><use href="#i-plus"/></svg></button></div>
+      <div id="folders-list"></div>
+    </div>
+    <div class="sidebar-section" id="tags-section" style="display:none">
+      <div class="sidebar-section-title">Tags</div>
+      <div id="tags-list" style="padding:3px 8px;display:flex;flex-wrap:wrap;gap:4px"></div>
+    </div>
+  </div>
+  <div class="sidebar-bottom-actions">
+    <button class="new-btn primary" style="width:100%;margin-bottom:6px" onclick="openEditor()" title="New Note (Cmd/Ctrl+N)"><svg class="ic"><use href="#i-plus"/></svg> <span>New Note</span></button>
+    <div class="bottom-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:4px">
+      <button class="new-btn secondary" onclick="showTemplates()" title="Templates"><svg class="ic"><use href="#i-bookmark"/></svg> <span>Template</span></button>
+      <button class="new-btn secondary" onclick="showFolderModal()" title="New Folder"><svg class="ic"><use href="#i-folder-plus"/></svg> <span>Folder</span></button>
+      <button class="new-btn secondary" onclick="exportAllJSON()" title="Export All Notes"><svg class="ic"><use href="#i-archive"/></svg> <span>Export</span></button>
+      <button class="new-btn secondary" onclick="showImportModal()" title="Import Notes"><svg class="ic"><use href="#i-upload"/></svg> <span>Import</span></button>
+    </div>
+    <div class="bottom-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:4px">
+      <button class="new-btn secondary" onclick="showShortcutsModal()" title="Keyboard Shortcuts (?)"><svg class="ic"><use href="#i-keyboard"/></svg> <span>Shortcuts</span></button>
+      <button class="new-btn secondary" onclick="showSettings()" title="Settings"><svg class="ic"><use href="#i-settings"/></svg> <span>Settings</span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-overlay" id="mobileOverlay" onclick="closeSidebar()"></div>
+
+<div class="main" id="mainArea">
+  <div class="topbar">
+    <button class="icon-btn" onclick="toggleSidebar()" title="Toggle Sidebar (Cmd/Ctrl+B)" id="menuBtn"><svg class="ic"><use href="#i-panel-left"/></svg></button>
+    <div class="breadcrumb" id="breadcrumb"><span class="current">All Notes</span></div>
+    <div class="search-box">
+      <svg class="ic" style="width:15px;height:15px;position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--text3)"><use href="#i-search"/></svg>
+      <input type="text" placeholder="Search notes... (Cmd+K)" id="searchInput" oninput="onSearch()">
+    </div>
+    <div class="topbar-actions">
+      <button class="icon-btn" onclick="openCommandPalette()" title="Command Palette (Cmd+K)"><svg class="ic"><use href="#i-command"/></svg></button>
+      <button class="icon-btn" onclick="openGraphView()" title="Mind Map / Graph View (Cmd+G)"><svg class="ic"><use href="#i-network"/></svg></button>
+      <button class="icon-btn" onclick="showAdvancedSearch()" title="Advanced Search"><svg class="ic"><use href="#i-sliders"/></svg></button>
+      <button class="icon-btn" onclick="toggleBulkMode()" title="Bulk Select" id="bulkModeBtn"><svg class="ic"><use href="#i-check-square"/></svg></button>
+      <select class="sort-select" id="sortSelect" onchange="renderNotes()">
+        <option value="updated">Updated</option>
+        <option value="created">Created</option>
+        <option value="title">Title</option>
+      </select>
+      <button class="icon-btn" onclick="toggleDark()" id="darkBtn" title="Toggle Theme"><svg class="ic"><use href="#i-sun"/></svg></button>
+    </div>
+  </div>
+  
+  <div class="bulk-bar" id="bulkBar">
+    <span class="bulk-count"><span id="bulkCount">0</span> selected</span>
+    <button onclick="bulkMoveToFolder()"><svg class="ic"><use href="#i-folder"/></svg> Move</button>
+    <button onclick="bulkTrash()" class="danger"><svg class="ic"><use href="#i-trash"/></svg> Trash</button>
+    <button onclick="exitBulkMode()" class="bulk-close"><svg class="ic"><use href="#i-x"/></svg></button>
+  </div>
+  
+  <div class="notes-area" id="notesArea">
+    <div id="trashBar" style="display:none;align-items:center;justify-content:space-between;padding:8px 16px;background:var(--red-light);border-radius:8px;margin-bottom:12px;font-size:12px;color:var(--red)">
+      <span style="display:inline-flex;align-items:center;gap:6px"><svg class="ic"><use href="#i-trash"/></svg> <span id="trashCountLabel">0</span> note(s) in trash — auto-deleted after 30 days</span>
+      <button onclick="showEmptyTrashModal()" style="padding:5px 14px;border:none;border-radius:6px;background:var(--red);color:#fff;font-size:11px;font-weight:600;cursor:pointer">Empty Trash</button>
+    </div>
+    <div class="notes-grid" id="notesGrid"></div>
+    <div class="empty" id="emptyState" style="display:none">
+      <div class="empty-icon"><svg class="ic"><use href="#i-file-text"/></svg></div>
+      <h3 id="emptyTitle">No notes yet</h3>
+      <p id="emptyMsg">Create your first note</p>
+      <button class="empty-btn" onclick="openEditor()"><svg class="ic"><use href="#i-plus"/></svg> Create Note</button>
+    </div>
+  </div>
+
+  <div class="stats-wrap" id="statsWrap">
+    <div class="stats-header">
+      <h2><svg class="ic"><use href="#i-bar-chart"/></svg> Your Statistics</h2>
+      <button class="icon-btn" onclick="closeStats()"><svg class="ic"><use href="#i-x"/></svg></button>
+    </div>
+    <div class="stats-body" id="statsBody"></div>
+  </div>
+
+  <div class="editor-wrap" id="editorWrap">
+    <div class="tabs-bar" id="tabsBar"></div>
+    <div class="editor-header">
+      <span id="editorLangIcon" style="font-size:15px">📝</span>
+      <span style="font-size:12px;font-weight:600;color:var(--text2)" id="editorLabel">New Note</span>
+      <div class="editor-header-actions">
+        <button class="icon-btn" onclick="toggleZenMode()" title="Zen Mode (Cmd+Shift+Z)" id="zenHeaderBtn"><svg class="ic"><use href="#i-maximize"/></svg></button>
+        <button class="icon-btn" onclick="toggleTocDock()" title="Table of Contents (Cmd+Shift+T)" id="tocHeaderBtn"><svg class="ic"><use href="#i-layers"/></svg></button>
+        <button class="icon-btn" onclick="duplicateNote()" title="Duplicate" id="dupBtn" style="display:none"><svg class="ic"><use href="#i-copy"/></svg></button>
+        <button class="icon-btn" onclick="exportNotePdf()" title="Export PDF" id="pdfBtn" style="display:none"><svg class="ic"><use href="#i-printer"/></svg></button>
+        <button class="icon-btn" onclick="exportNoteMd()" title="Export .md" id="exportBtn" style="display:none"><svg class="ic"><use href="#i-download"/></svg></button>
+        <button class="icon-btn" onclick="copyEditorMarkdown()" title="Copy Markdown" id="copyMdBtn" style="display:none"><svg class="ic"><use href="#i-clipboard"/></svg></button>
+        <button class="icon-btn" onclick="shareNote()" title="Share Link" id="shareBtn" style="display:none"><svg class="ic"><use href="#i-share"/></svg></button>
+        <button class="icon-btn" onclick="toggleEncryption()" title="Encrypt/Decrypt" id="lockBtn" style="display:none"><svg class="ic"><use href="#i-unlock"/></svg></button>
+        <button class="icon-btn" id="pinBtn" onclick="toggleEditorPin()" title="Pin"><svg class="ic"><use href="#i-pin"/></svg></button>
+        <button class="icon-btn" id="favBtn" onclick="toggleEditorFav()" title="Favorite"><svg class="ic"><use href="#i-heart"/></svg></button>
+        <button class="icon-btn" id="delBtn" onclick="showDeleteConfirm()" title="Delete" style="display:none"><svg class="ic"><use href="#i-trash"/></svg></button>
+        <button class="icon-btn" onclick="toggleBacklinks()" title="Backlinks" id="backlinksBtn"><svg class="ic"><use href="#i-link"/></svg></button>
+        <div style="width:1px;height:18px;background:var(--border);margin:0 3px"></div>
+        <button class="icon-btn" onclick="closeEditor()" title="Close (Esc)"><svg class="ic"><use href="#i-x"/></svg></button>
+      </div>
+    </div>
+    <div class="editor-meta">
+      <input type="text" class="editor-title-input" id="editorTitle" placeholder="Untitled note..." autocomplete="off">
+      <div class="editor-meta-row">
+        <input type="hidden" id="editorLang" value="markdown">
+        <select class="editor-select" id="editorFolder" onchange="triggerAutoSave()" title="Folder" aria-label="Folder">
+          <option value="">📂 No Folder</option>
+        </select>
+        <div class="tag-input-wrap" id="tagsWrap">
+          <input type="text" class="tag-input" id="tagInput" placeholder="Add tag ↵" onkeydown="onTagKey(event)">
+        </div>
+      </div>
+    </div>
+    <div class="editor-toolbar">
+      <button class="toolbar-btn" onclick="insertMd('**','**')" title="Bold (Cmd+B)"><b>B</b></button>
+      <button class="toolbar-btn" onclick="insertMd('*','*')" title="Italic (Cmd+I)"><i>I</i></button>
+      <button class="toolbar-btn" onclick="insertMd('`','`')" title="Inline Code (Cmd+E)">&lt;&gt;</button>
+      <div class="toolbar-divider"></div>
+      <button class="toolbar-btn" onclick="insertMd('# ','')" title="Heading 1">H1</button>
+      <button class="toolbar-btn" onclick="insertMd('## ','')" title="Heading 2">H2</button>
+      <button class="toolbar-btn" onclick="insertMd('### ','')" title="Heading 3">H3</button>
+      <button class="toolbar-btn auto-width" onclick="insertObsidianCodeBlock()" title="Code Block (```) — Obsidian style" style="display:inline-flex;align-items:center;gap:3px;font-family:var(--mono);font-size:11px;font-weight:700"><svg class="ic" style="width:13px;height:13px"><use href="#i-code"/></svg> Code</button>
+      <div class="toolbar-divider"></div>
+      <button class="toolbar-btn" onclick="insertMd('- ','')" title="Bullet">•</button>
+      <button class="toolbar-btn" onclick="insertMd('1. ','')" title="Number">1.</button>
+      <button class="toolbar-btn" onclick="insertMd('- [ ] ','')" title="Task Checkbox">☑</button>
+      <div class="toolbar-divider"></div>
+      <button class="toolbar-btn" onclick="insertMd('> ','')" title="Quote"><svg class="ic"><use href="#i-quote"/></svg></button>
+      <button class="toolbar-btn" onclick="insertMd('[[',']]')" title="Link Note ([[note]])"><svg class="ic"><use href="#i-link"/></svg></button>
+      <button class="toolbar-btn" onclick="insertObsidianCodeBlock()" title="Code Block"><svg class="ic"><use href="#i-code"/></svg></button>
+      <button class="toolbar-btn" onclick="insertMd('---\n','')" title="Divider"><svg class="ic"><use href="#i-minus"/></svg></button>
+      <div class="toolbar-divider"></div>
+      <button class="toolbar-btn auto-width" onclick="toggleZenMode()" title="Zen Focus Mode (Cmd+Shift+Z)" id="zenToolbarBtn"><svg class="ic"><use href="#i-maximize"/></svg> Zen</button>
+      <button class="toolbar-btn auto-width" onclick="toggleTocDock()" title="Table of Contents (Cmd+Shift+T)" id="tocToolbarBtn"><svg class="ic"><use href="#i-layers"/></svg> TOC</button>
+      <div class="mode-switch">
+        <button class="mode-btn active" data-mode="edit" onclick="setMode('edit')"><svg class="ic"><use href="#i-edit"/></svg> Write</button>
+        <button class="mode-btn" data-mode="split" onclick="setMode('split')"><svg class="ic"><use href="#i-columns"/></svg> Split</button>
+        <button class="mode-btn" data-mode="preview" onclick="setMode('preview')"><svg class="ic"><use href="#i-eye"/></svg> Preview</button>
+      </div>
+    </div>
+    <div class="editor-body">
+      <div class="editor-content" id="editorContent">
+        <textarea class="editor-textarea" id="editorTextarea" placeholder="Start writing...&#10;&#10;Tips:&#10;• Use [[Note Name]] to link notes&#10;• Use ```js for JavaScript code blocks&#10;• Switch to Preview mode and click ▶ Run to execute JS code&#10;• Only JavaScript can run in the browser (not Python)" spellcheck="false" oninput="onEditorInput()"></textarea>
+      </div>
+      <div class="backlinks-panel" id="backlinksPanel">
+        <div class="backlinks-title"><svg class="ic"><use href="#i-link"/></svg> Backlinks</div>
+        <div id="backlinksList"></div>
+      </div>
+      <div class="toc-dock collapsed" id="tocDock">
+        <div class="toc-dock-header">
+          <span class="toc-dock-title"><svg class="ic"><use href="#i-layers"/></svg> Table of Contents</span>
+          <button class="icon-btn" onclick="toggleTocDock()" title="Close TOC"><svg class="ic"><use href="#i-x"/></svg></button>
+        </div>
+        <div class="toc-stats-badge">
+          <span id="tocReadingTime">⏱ ~1 min read</span>
+          <span id="tocWordCount" style="color:var(--text3);font-size:10px">0 words</span>
+        </div>
+        <div class="toc-items-list" id="tocItemsList"></div>
+      </div>
+      <div class="zen-hud" id="zenHud">
+        <span id="zenTitle" style="font-weight:600;color:var(--text)">Untitled note</span>
+        <span style="opacity:0.4">·</span>
+        <span id="zenStats">0 words</span>
+        <button class="zen-exit-btn" onclick="toggleZenMode()"><svg class="ic"><use href="#i-minimize"/></svg> Exit Zen</button>
+      </div>
+      <div class="encrypted-overlay" id="encryptedOverlay" style="display:none">
+        <div class="lock-icon"><svg class="ic"><use href="#i-lock"/></svg></div>
+        <h3>This note is encrypted</h3>
+        <p>Enter the password to view and edit this note.</p>
+        <input type="password" id="decryptPassword" placeholder="Enter password..." onkeydown="if(event.key==='Enter')attemptDecrypt()">
+        <div id="decryptError" style="color:var(--red);font-size:11px;margin-bottom:10px;display:none"></div>
+        <div class="btn-row">
+          <button class="btn-secondary" onclick="closeEditor()">Cancel</button>
+          <button class="btn-primary" onclick="attemptDecrypt()"><svg class="ic"><use href="#i-unlock"/></svg> Unlock</button>
+        </div>
+      </div>
+    </div>
+    <div class="editor-footer">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div id="editorStats">0 words</div>
+        <div id="wordGoalDisplay" style="display:none;align-items:center;gap:4px;font-size:10px;color:var(--text3)"></div>
+        <div class="auto-save-badge" id="autoSaveBadge"></div>
+      </div>
+      <div class="editor-footer-actions">
+        <button class="cancel-btn" onclick="closeEditor()">Cancel</button>
+        <button class="save-btn" onclick="saveNote()"><svg class="ic"><use href="#i-save"/></svg> Save</button>
+      </div>
+    </div>
+    <div class="delete-modal" id="deleteModal" style="display:none">
+      <div class="modal">
+        <h3><svg class="ic"><use href="#i-trash"/></svg> Move to Trash?</h3>
+        <p>You can restore it within 30 days from Trash.</p>
+        <div class="modal-actions">
+          <button class="btn-secondary" onclick="hideDeleteConfirm()">Cancel</button>
+          <button class="btn-danger" onclick="confirmDelete()">Move to Trash</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOLDER MODAL -->
+<div class="modal-bg" id="folderModal" style="display:none" onclick="if(event.target===this)hideFolderModal()">
+  <div class="modal">
+    <h3 id="folderModalTitle"><svg class="ic"><use href="#i-folder-plus"/></svg> New Folder</h3>
+    <p>Enter folder name</p>
+    <input type="text" id="folderNameInput" placeholder="Folder name...">
+    <div style="margin-bottom:10px">
+      <label style="font-size:10px;color:var(--text3)">Parent Folder (optional)</label>
+      <select class="editor-select" id="folderParentSelect" style="width:100%;margin-top:4px"></select>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="hideFolderModal()">Cancel</button>
+      <button class="btn-primary" onclick="saveFolderModal()">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- DELETE FOLDER MODAL -->
+<div class="modal-bg" id="deleteFolderModal" style="display:none" onclick="if(event.target===this)hideDeleteFolderModal()">
+  <div class="modal">
+    <h3><svg class="ic"><use href="#i-trash"/></svg> Delete Folder?</h3>
+    <p id="deleteFolderMsg">Notes inside will move to parent folder.</p>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="hideDeleteFolderModal()">Cancel</button>
+      <button class="btn-danger" onclick="confirmDeleteFolder()">Delete</button>
+    </div>
+  </div>
+</div>
+
+<!-- TEMPLATES MODAL -->
+<div class="modal-bg" id="templatesModal" style="display:none" onclick="if(event.target===this)hideTemplates()">
+  <div class="modal">
+    <h3><svg class="ic"><use href="#i-bookmark"/></svg> Choose a Template</h3>
+    <p>Start with a pre-made structure</p>
+    <div class="templates-grid" id="templatesGrid"></div>
+  </div>
+</div>
+
+<!-- IMPORT MODAL -->
+<div class="modal-bg" id="importModal" style="display:none" onclick="if(event.target===this)hideImportModal()">
+  <div class="modal">
+    <h3><svg class="ic"><use href="#i-upload"/></svg> Import Notes</h3>
+    <p>Drop .md or .json files to import</p>
+    <div class="drop-zone" id="dropZone" onclick="document.getElementById('fileInput').click()">
+      <svg class="ic"><use href="#i-upload"/></svg>
+      Drop files here or click to browse
+      <input type="file" id="fileInput" multiple accept=".md,.json,.txt" onchange="handleFiles(this.files)">
+    </div>
+    <div id="importStatus" style="margin-top:10px;font-size:11px;color:var(--text2)"></div>
+  </div>
+</div>
+
+<!-- ADVANCED SEARCH MODAL -->
+<div class="modal-bg" id="advSearchModal" style="display:none" onclick="if(event.target===this)hideAdvancedSearch()">
+  <div class="modal">
+    <h3><svg class="ic"><use href="#i-sliders"/></svg> Advanced Search</h3>
+    <div class="filter-group">
+      <label>Search Text</label>
+      <input type="search" id="advSearchText" placeholder="Keywords...">
+    </div>
+    <div class="filter-group">
+      <label>Folder</label>
+      <select id="advSearchFolder"><option value="">All Folders</option></select>
+    </div>
+    <div class="filter-group">
+      <label>Date Range</label>
+      <div class="filter-row">
+        <input type="date" id="advSearchFrom">
+        <input type="date" id="advSearchTo">
+      </div>
+    </div>
+    <div class="filter-group">
+      <label>Has Code Blocks</label>
+      <select id="advSearchCode">
+        <option value="">Any</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="clearAdvSearch()">Clear</button>
+      <button class="btn-primary" onclick="applyAdvSearch()">Search</button>
+    </div>
+  </div>
+</div>
+
+<!-- BULK MOVE MODAL -->
+<div class="modal-bg" id="bulkMoveModal" style="display:none" onclick="if(event.target===this)hideBulkMove()">
+  <div class="modal">
+    <h3><svg class="ic"><use href="#i-folder"/></svg> Move to Folder</h3>
+    <p>Select destination folder</p>
+    <select id="bulkMoveFolder" style="width:100%;padding:8px;border:1px solid var(--border);border-radius:6px;margin-bottom:12px"></select>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="hideBulkMove()">Cancel</button>
+      <button class="btn-primary" onclick="confirmBulkMove()">Move</button>
+    </div>
+  </div>
+</div>
+
+<!-- RESTORE FROM TRASH MODAL (for trash view) -->
+<div class="modal-bg" id="restoreModal" style="display:none" onclick="if(event.target===this)hideRestoreModal()">
+  <div class="modal">
+    <h3><svg class="ic"><use href="#i-rotate-ccw"/></svg> Restore Note?</h3>
+    <p id="restoreMsg">This note will be restored to your notes.</p>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="hideRestoreModal()">Cancel</button>
+      <button class="btn-danger" onclick="permanentDelete()">Delete Forever</button>
+      <button class="btn-primary" onclick="confirmRestore()">Restore</button>
+    </div>
+  </div>
+</div>
+
+<!-- ENCRYPTION MODAL -->
+<div class="modal-bg" id="encryptModal" style="display:none" onclick="if(event.target===this)hideEncryptModal()">
+  <div class="modal">
+    <h3 id="encryptModalTitle"><svg class="ic"><use href="#i-lock"/></svg> Encrypt Note</h3>
+    <p id="encryptModalMsg">Enter a password to protect this note. <strong>If you forget it, the note cannot be recovered!</strong></p>
+    <input type="password" id="encryptPassword" placeholder="Enter password..." autocomplete="new-password">
+    <input type="password" id="encryptPasswordConfirm" placeholder="Confirm password...">
+    <div id="encryptError" style="color:var(--red);font-size:11px;margin-bottom:10px;display:none"></div>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="hideEncryptModal()">Cancel</button>
+      <button class="btn-primary" onclick="confirmEncrypt()"><svg class="ic"><use href="#i-lock"/></svg> Encrypt</button>
+    </div>
+  </div>
+</div>
+
+<!-- SETTINGS MODAL -->
+<div class="modal-bg" id="settingsModal" style="display:none" onclick="if(event.target===this)hideSettings()">
+  <div class="modal" style="max-width:420px">
+    <h3><svg class="ic"><use href="#i-settings"/></svg> Settings</h3>
+    
+    <div class="settings-section">
+      <h4><svg class="ic"><use href="#i-type"/></svg> Site & Editor Typography</h4>
+      <div class="setting-row" style="flex-direction:column;align-items:flex-start;gap:8px">
+        <span>Font Family</span>
+        <div class="font-choice-group">
+          <button id="fontBtnInter" class="font-choice-btn active" onclick="setFontChoice('Inter')">
+            <b>Default</b> (Notion Inter)
+          </button>
+          <button id="fontBtnGoogleSans" class="font-choice-btn" style="font-family: 'Google Sans', sans-serif" onclick="setFontChoice('Google Sans')">
+            <b>Google Sans</b>
+          </button>
+          <button id="fontBtnMontserrat" class="font-choice-btn" style="font-family: 'Montserrat', sans-serif" onclick="setFontChoice('Montserrat')">
+            <b>Montserrat</b>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="settings-section">
+      <h4><svg class="ic"><use href="#i-type"/></svg> Editor Font Size</h4>
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="font-size:11px;color:var(--text3)">A</span>
+        <input type="range" class="font-size-slider" id="fontSizeSlider" min="10" max="22" value="12" oninput="updateFontSize(this.value)">
+        <span style="font-size:16px;color:var(--text3)">A</span>
+        <span style="font-size:12px;color:var(--text2);min-width:30px" id="fontSizeLabel">12px</span>
+      </div>
+    </div>
+    <div class="settings-section">
+      <h4><svg class="ic"><use href="#i-ruler"/></svg> Preview Font Size</h4>
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="font-size:11px;color:var(--text3)">A</span>
+        <input type="range" class="font-size-slider" id="previewFontSlider" min="11" max="20" value="13" oninput="updatePreviewFont(this.value)">
+        <span style="font-size:16px;color:var(--text3)">A</span>
+        <span style="font-size:12px;color:var(--text2);min-width:30px" id="previewFontLabel">13px</span>
+      </div>
+    </div>
+    <div class="settings-section">
+      <h4><svg class="ic"><use href="#i-target"/></svg> Daily Word Goal</h4>
+      <div class="setting-row">
+        <span>Target words per day</span>
+        <div style="display:flex;align-items:center;gap:6px">
+          <input type="number" id="wordGoalInput" min="0" max="50000" step="50" value="0" style="width:80px;padding:4px 8px;border:1px solid var(--border);border-radius:6px;font-size:12px;background:var(--bg2);color:var(--text)" onchange="updateWordGoal(this.value)">
+          <span style="font-size:10px;color:var(--text3)">0 = off</span>
+        </div>
+      </div>
+    </div>
+    <div class="settings-section">
+      <h4><svg class="ic"><use href="#i-edit"/></svg> Editor Preferences</h4>
+      <div class="setting-row">
+        <span>Show Line Numbers</span>
+        <label style="position:relative;display:inline-flex;align-items:center;cursor:pointer">
+          <input type="checkbox" id="lineNumbersToggle" onchange="toggleLineNumbers(this.checked)" style="width:16px;height:16px;accent-color:var(--brand);cursor:pointer">
+        </label>
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-secondary" id="installPwaBtn" style="display:none" onclick="installPWA()">Install App</button>
+      <button class="btn-secondary" onclick="resetSettings()">Reset Defaults</button>
+      <button class="btn-primary" onclick="hideSettings()">Done</button>
+    </div>
+  </div>
+</div>
+
+<!-- EMPTY TRASH MODAL -->
+<div class="modal-bg" id="emptyTrashModal" style="display:none" onclick="if(event.target===this)hideEmptyTrashModal()">
+  <div class="modal">
+    <h3><svg class="ic"><use href="#i-trash"/></svg> Empty Trash?</h3>
+    <p>This will <strong>permanently delete all notes</strong> in the trash. This cannot be undone.</p>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="hideEmptyTrashModal()">Cancel</button>
+      <button class="btn-danger" onclick="confirmEmptyTrash()">Delete All Forever</button>
+    </div>
+  </div>
+</div>
+
+<!-- CONTEXT MENU -->
+<div class="ctx-menu" id="ctxMenu">
+  <div id="ctxItems"></div>
+</div>
+
+<!-- SHARE MODAL -->
+<div class="modal-bg" id="shareModal" style="display:none" onclick="if(event.target===this)hideShareModal()">
+  <div class="modal" style="text-align:center;max-width:480px;padding:24px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+      <h3 id="shareModalTitle" style="font-size:16px;font-weight:700;display:flex;align-items:center;gap:8px;margin:0"><svg class="ic"><use href="#i-share"/></svg> Share Note</h3>
+      <button class="icon-btn" onclick="hideShareModal()" title="Close"><svg class="ic"><use href="#i-x"/></svg></button>
+    </div>
+    <p id="shareModalMsg" style="font-size:12px;color:var(--text2);margin-bottom:16px;text-align:left">Choose how you want to share this note with friends or teammates:</p>
+    
+    <!-- QUICK ACTIONS -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px">
+      <button class="btn-primary" id="nativeShareBtn" onclick="shareViaNativeApp()" style="padding:10px;justify-content:center;font-size:12px">
+        <svg class="ic"><use href="#i-share"/></svg> Share to Apps...
+      </button>
+      <button class="btn-secondary" onclick="copyNoteMarkdownText()" style="padding:10px;justify-content:center;font-size:12px">
+        <svg class="ic"><use href="#i-clipboard"/></svg> Copy Note Text
+      </button>
+      <button class="btn-secondary" onclick="shareToWhatsApp()" style="padding:10px;justify-content:center;font-size:12px">
+        💬 Send to WhatsApp
+      </button>
+      <button class="btn-secondary" onclick="shareToTwitter()" style="padding:10px;justify-content:center;font-size:12px">
+        🐦 Share on X / Twitter
+      </button>
+    </div>
+
+    <div style="border-top:1px solid var(--border);padding-top:14px;text-align:left">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+        <label style="font-size:11px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:0.5px">Short Share Link</label>
+        <span style="font-size:11px;color:var(--text3)">Fast, clean &amp; formatted</span>
+      </div>
+      <div style="display:flex;gap:6px;align-items:center;margin-bottom:10px">
+        <input type="text" id="shareUrlInput" readonly onclick="this.select()" style="flex:1;padding:8px 10px;border:1px solid var(--border);border-radius:6px;font-size:11px;background:var(--bg3);color:var(--text);font-family:monospace;cursor:pointer">
+        <button class="btn-primary" style="padding:8px 14px;font-size:11px;white-space:nowrap" onclick="copyShareUrl()"><svg class="ic"><use href="#i-clipboard"/></svg> Copy Link</button>
+        <button class="btn-secondary" style="padding:8px 12px;font-size:11px;white-space:nowrap" onclick="openShareUrl()" title="Open shared note"><svg class="ic"><use href="#i-external-link"/></svg> Open</button>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:6px;flex-wrap:wrap">
+        <div style="display:flex;gap:6px">
+          <button class="btn-secondary" style="padding:5px 10px;font-size:10.5px" onclick="updateCurrentShare()" title="Sync note edits to this link"><svg class="ic"><use href="#i-rotate-ccw"/></svg> Refresh Link</button>
+          <button class="btn-danger" style="padding:5px 10px;font-size:10.5px" onclick="deleteCurrentShare()" title="Remove this share link"><svg class="ic"><use href="#i-trash"/></svg> Remove Link</button>
+        </div>
+        <span style="font-size:10.5px;color:var(--text3)">Hosted on DevNotes Cloud</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SHARED NOTE VIEWER (Dedicated view when opening a #share=... link) -->
+<div class="modal-bg" id="sharedNoteModal" style="display:none" onclick="if(event.target===this)closeSharedNoteView()">
+  <div class="modal" style="max-width:760px;width:95%;max-height:88vh;display:flex;flex-direction:column;padding:0;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow2)">
+    <div style="padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--bg3);flex-wrap:wrap;gap:10px">
+      <div style="display:flex;align-items:center;gap:10px;min-width:0">
+        <span id="sharedNoteIcon" style="font-size:22px;display:flex;align-items:center">📄</span>
+        <div style="min-width:0">
+          <h3 id="sharedNoteTitle" style="font-size:16px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin:0;color:var(--text)">Shared Note</h3>
+          <div id="sharedNoteMeta" style="font-size:11px;color:var(--text3);display:flex;align-items:center;gap:8px;margin-top:2px">
+            <span id="sharedNoteLang" class="tag" style="background:var(--bg2);color:var(--text2);font-weight:600;font-size:10px">Markdown</span>
+            <span id="sharedNoteDate">Shared via DevNotes</span>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+        <button class="btn-primary" onclick="importSharedNoteToMyNotes()" title="Save a copy into your personal DevNotes collection"><svg class="ic"><use href="#i-download"/></svg> Save to My Notes</button>
+        <button class="btn-secondary" onclick="copySharedNoteContent()" title="Copy raw markdown text"><svg class="ic"><use href="#i-clipboard"/></svg> Copy Content</button>
+        <button class="icon-btn" onclick="closeSharedNoteView()" title="Close to DevNotes Home"><svg class="ic"><use href="#i-x"/></svg></button>
+      </div>
+    </div>
+    <div id="sharedNoteTags" style="padding:8px 20px;display:flex;flex-wrap:wrap;gap:4px;border-bottom:1px solid var(--border);background:var(--bg2);display:none"></div>
+    <div style="flex:1;overflow-y:auto;padding:24px 28px;background:var(--bg)">
+      <div id="sharedNotePreview" class="preview" style="max-width:100%;font-size:14px;line-height:1.65;letter-spacing:-0.011em"></div>
+    </div>
+    <div style="padding:10px 20px;border-top:1px solid var(--border);background:var(--bg3);display:flex;align-items:center;justify-content:space-between;font-size:11px;color:var(--text3)">
+      <span>Shared with <strong style="color:var(--text)">DevNotes</strong> · Offline-first &amp; Private</span>
+      <button class="btn-secondary" style="padding:4px 10px;font-size:11px" onclick="closeSharedNoteView()">Go to My Notes</button>
+    </div>
+  </div>
+</div>
+
+<!-- COMMAND PALETTE MODAL -->
+<div class="cmd-palette-bg" id="cmdPaletteModal" onclick="if(event.target===this)closeCommandPalette()">
+  <div class="cmd-palette-box">
+    <div class="cmd-palette-input-wrap">
+      <svg class="ic" style="color:var(--text3);width:16px;height:16px"><use href="#i-search"/></svg>
+      <input type="text" class="cmd-palette-input" id="cmdPaletteInput" placeholder="Search notes or type a command... (e.g. 'Zen', 'New', 'Dark', 'Graph')" autocomplete="off" oninput="onCmdPaletteInput()" onkeydown="onCmdPaletteKeyDown(event)">
+      <kbd>ESC</kbd>
+    </div>
+    <div class="cmd-palette-list" id="cmdPaletteList"></div>
+    <div class="cmd-footer">
+      <span><kbd>↑</kbd> <kbd>↓</kbd> Navigate</span>
+      <span><kbd>↵</kbd> Select</span>
+      <span><kbd>ESC</kbd> Close</span>
+    </div>
+  </div>
+</div>
+
+<!-- MIND MAP / GRAPH VIEW MODAL -->
+<div class="graph-modal" id="graphModal">
+  <div class="graph-header">
+    <div class="graph-title">
+      <svg class="ic"><use href="#i-network"/></svg>
+      <span>Mind Map & Note Graph</span>
+      <span id="graphNodeCount" style="font-size:11px;color:var(--text3);font-weight:400;margin-left:8px">0 nodes</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px">
+      <input type="text" class="graph-search" id="graphSearchInput" placeholder="Filter graph..." oninput="onGraphSearch(this.value)">
+      <div class="graph-controls">
+        <button class="icon-btn" onclick="graphZoom(1.2)" title="Zoom In"><svg class="ic"><use href="#i-plus"/></svg></button>
+        <button class="icon-btn" onclick="graphZoom(0.8)" title="Zoom Out"><svg class="ic"><use href="#i-minus"/></svg></button>
+        <button class="icon-btn" onclick="graphResetView()" title="Fit View"><svg class="ic"><use href="#i-rotate-ccw"/></svg></button>
+        <button class="icon-btn" onclick="closeGraphView()" title="Close Graph (Esc)"><svg class="ic"><use href="#i-x"/></svg></button>
+      </div>
+    </div>
+  </div>
+  <div class="graph-canvas-wrap" id="graphCanvasWrap">
+    <canvas id="graphCanvas"></canvas>
+    <div class="graph-tooltip" id="graphTooltip"></div>
+  </div>
+</div>
+
+<!-- KEYBOARD SHORTCUTS MODAL -->
+<div class="modal-bg" id="shortcutsModal" style="display:none" onclick="if(event.target===this)hideShortcutsModal()">
+  <div class="modal" style="max-width:520px;max-height:85vh;overflow-y:auto">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+      <h3 style="display:flex;align-items:center;gap:8px"><svg class="ic"><use href="#i-keyboard"/></svg> Keyboard Shortcuts</h3>
+      <button class="icon-btn" onclick="hideShortcutsModal()"><svg class="ic"><use href="#i-x"/></svg></button>
+    </div>
+    
+    <div class="shortcut-category">
+      <div class="shortcut-cat-title">Navigation & Tools</div>
+      <div class="shortcut-row"><span>Command Palette</span><div class="shortcut-keys"><kbd>Cmd / Ctrl</kbd><kbd>K</kbd></div></div>
+      <div class="shortcut-row"><span>Mind Map / Graph View</span><div class="shortcut-keys"><kbd>Cmd / Ctrl</kbd><kbd>G</kbd></div></div>
+      <div class="shortcut-row"><span>Quick Search</span><div class="shortcut-keys"><kbd>Cmd / Ctrl</kbd><kbd>F</kbd></div></div>
+      <div class="shortcut-row"><span>Toggle Sidebar / Collapse</span><div class="shortcut-keys"><kbd>Cmd / Ctrl</kbd><kbd>B</kbd><span style="font-size:10px;color:var(--text3)">or</span><kbd>\</kbd></div></div>
+      <div class="shortcut-row"><span>Shortcuts Cheat Sheet</span><div class="shortcut-keys"><kbd>?</kbd></div></div>
+    </div>
+
+    <div class="shortcut-category">
+      <div class="shortcut-cat-title">Note & Editor</div>
+      <div class="shortcut-row"><span>New Note</span><div class="shortcut-keys"><kbd>Cmd / Ctrl</kbd><kbd>N</kbd></div></div>
+      <div class="shortcut-row"><span>Save Note</span><div class="shortcut-keys"><kbd>Cmd / Ctrl</kbd><kbd>S</kbd></div></div>
+      <div class="shortcut-row"><span>Distraction-Free Zen Mode</span><div class="shortcut-keys"><kbd>Cmd / Ctrl</kbd><kbd>Shift</kbd><kbd>Z</kbd></div></div>
+      <div class="shortcut-row"><span>Table of Contents Outline</span><div class="shortcut-keys"><kbd>Cmd / Ctrl</kbd><kbd>Shift</kbd><kbd>T</kbd></div></div>
+      <div class="shortcut-row"><span>Export as PDF</span><div class="shortcut-keys"><kbd>Cmd / Ctrl</kbd><kbd>Shift</kbd><kbd>P</kbd></div></div>
+      <div class="shortcut-row"><span>Toggle Dark / Light Mode</span><div class="shortcut-keys"><kbd>Cmd / Ctrl</kbd><kbd>Shift</kbd><kbd>D</kbd></div></div>
+      <div class="shortcut-row"><span>Close Active View / Escape</span><div class="shortcut-keys"><kbd>Esc</kbd></div></div>
+    </div>
+
+    <div class="shortcut-category">
+      <div class="shortcut-cat-title">Markdown Formatting</div>
+      <div class="shortcut-row"><span>Bold Text</span><div class="shortcut-keys"><kbd>Cmd / Ctrl</kbd><kbd>B</kbd></div></div>
+      <div class="shortcut-row"><span>Italic Text</span><div class="shortcut-keys"><kbd>Cmd / Ctrl</kbd><kbd>I</kbd></div></div>
+      <div class="shortcut-row"><span>Inline Code</span><div class="shortcut-keys"><kbd>Cmd / Ctrl</kbd><kbd>E</kbd></div></div>
+      <div class="shortcut-row"><span>Link Note</span><div class="shortcut-keys"><kbd>[[</kbd> <kbd>title</kbd> <kbd>]]</kbd></div></div>
+    </div>
+  </div>
+</div>
+
+<script src="/script.js"></script>
+</body>
+</html>
