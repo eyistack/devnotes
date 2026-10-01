@@ -3,7 +3,7 @@
 ## Overview
 DevNotes is a lightweight, offline-first developer notebook built for writing, organizing, and executing code snippets alongside technical notes. Designed with a clean, Notion-inspired dark and light interface, it combines rich markdown editing, bi-directional note linking, an in-browser code execution sandbox, client-side encryption, and visual graph mapping into a responsive web application. It runs entirely in the browser with local persistence and integrates with Cloudflare Workers for secure note sharing.
 
-***Live Site:*** [https://devnotes.geekfolio.workers.dev/](https://devnotes.geekfolio.workers.dev/)
+***Live Site:*** [https://devnotes.geekfolio.workers.dev](https://devnotes.geekfolio.workers.dev)
 
 ---
 
