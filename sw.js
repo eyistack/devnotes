@@ -1,9 +1,13 @@
-const CACHE_NAME = 'devnotes-v3';
+const CACHE_NAME = 'devnotes-v8';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
+  '/styles.css',
+  '/script.js',
   '/manifest.json',
-  '/icon.svg'
+  '/icon.svg',
+  '/privacy/',
+  '/terms/'
 ];
 
 self.addEventListener('install', (event) => {

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service — DevNotes</title>
+<meta name="description" content="Terms of Service for DevNotes, a local-first developer notebook.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Source+Code+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23191919' stroke='%232f2f2f' stroke-width='4'/%3E%3Ctext x='50' y='68' font-size='46' font-weight='bold' fill='%23e6e6e5' text-anchor='middle' font-family='monospace'%3E%26lt;/%26gt;%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="/styles.css">
+<script>
+  (function() {
+    try {
+      const theme = localStorage.getItem('dn_theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch(e) {}
+  })();
+</script>
+<style>
+  html, body {
+    height: auto !important;
+    min-height: 100% !important;
+    overflow: auto !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+  }
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-primary, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh !important;
+    height: auto !important;
+    display: block !important;
+    overflow-y: auto !important;
+  }
+  .min-h-screen {
+    min-height: 100vh !important;
+    height: auto !important;
+    max-height: none !important;
+  }
+  .legal-wrapper {
+    max-width: 780px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+    box-sizing: border-box;
+    min-height: 100vh !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+  .legal-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 36px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .legal-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 700;
+    font-size: 17px;
+    letter-spacing: -0.02em;
+  }
+  .legal-brand-badge {
+    width: 28px;
+    height: 28px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mono, monospace);
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--brand);
+  }
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    border-radius: 6px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    text-decoration: none;
+    font-size: 12.5px;
+    font-weight: 500;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .back-btn:hover {
+    background: var(--bg3);
+    border-color: var(--border-subtle);
+  }
+  .legal-title-wrap {
+    margin-bottom: 32px;
+  }
+  .legal-title {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin: 0 0 8px;
+    color: var(--text);
+  }
+  .legal-meta {
+    font-size: 12.5px;
+    color: var(--text3);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .legal-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    background: var(--brand-light);
+    color: var(--brand2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .legal-content h2 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 32px 0 12px;
+    color: var(--text);
+    letter-spacing: -0.015em;
+  }
+  .legal-content p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text2);
+    margin: 0 0 16px;
+  }
+  .legal-content ul {
+    margin: 0 0 20px 20px;
+    padding: 0;
+    color: var(--text2);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .legal-content li {
+    margin-bottom: 8px;
+  }
+  .legal-content strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+  .legal-content a {
+    color: var(--btn-primary-bg);
+    text-decoration: none;
+  }
+  .legal-content a:hover {
+    text-decoration: underline;
+  }
+  .highlight-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 24px 0;
+  }
+  .highlight-card h3 {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 6px;
+    color: var(--text);
+  }
+  .highlight-card p {
+    font-size: 13px;
+    line-height: 1.6;
+    margin: 0;
+    color: var(--text2);
+  }
+  .legal-footer {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--text3);
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .legal-footer a {
+    color: var(--text2);
+    text-decoration: none;
+  }
+  .legal-footer a:hover {
+    color: var(--text);
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body class="dark min-h-screen">
+  <div class="legal-wrapper min-h-screen">
+    <header class="legal-topbar">
+      <a href="/" class="legal-brand" title="Back to DevNotes">
+        <div class="legal-brand-badge">&lt;/&gt;</div>
+        <span>DevNotes</span>
+      </a>
+      <a href="/" class="back-btn">
+        <span>← Back to Notes</span>
+      </a>
+    </header>
+
+    <div class="legal-title-wrap">
+      <h1 class="legal-title">Terms of Service</h1>
+      <div class="legal-meta">
+        <span>Last Updated: October 2026</span>
+        <span class="legal-badge">Standard Terms</span>
+      </div>
+    </div>
+
+    <main class="legal-content">
+      <div class="highlight-card">
+        <h3>Summary in Plain English</h3>
+        <p>DevNotes is a free, local-first developer productivity application. You own everything you create. You are responsible for maintaining backups of your local data. Please use the optional note-sharing feature responsibly and refrain from publishing harmful or illegal material.</p>
+      </div>
+
+      <h2>1. Acceptance of Terms</h2>
+      <p>By accessing, installing, or using DevNotes ("the Service"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, please do not use the application.</p>
+
+      <h2>2. Description of the Application</h2>
+      <p>DevNotes is a lightweight, browser-based developer notebook designed for personal, technical, and educational note-taking, markdown rendering, and code experimentation. The core functionality runs client-side on your local device without requiring an account.</p>
+
+      <h2>3. Ownership and User Content</h2>
+      <p>You retain 100% ownership, intellectual property rights, and responsibility for all content, notes, snippets, diagrams, and code entered into DevNotes.</p>
+      <ul>
+        <li>DevNotes claims no ownership or rights over your notes or data.</li>
+        <li>Because data is stored in your local browser storage, you are solely responsible for exporting and preserving backups of your notes.</li>
+        <li>We cannot restore notes deleted through browser clearing, device damage, or manual removal.</li>
+      </ul>
+
+      <h2>4. Client-Side Encryption Responsibility</h2>
+      <p>DevNotes offers client-side AES-GCM encryption for notes. You acknowledge that:</p>
+      <ul>
+        <li>Encryption keys are derived client-side from your chosen passphrase.</li>
+        <li>DevNotes does not store or have access to your passphrases.</li>
+        <li>Loss of your passphrase means permanent and unrecoverable loss of the encrypted note content.</li>
+      </ul>
+
+      <h2>5. In-Browser Code Runner Disclaimer</h2>
+      <p>DevNotes includes an in-browser code execution sandbox to test code snippets. You agree that:</p>
+      <ul>
+        <li>All code runs inside your local browser environment.</li>
+        <li>You are solely responsible for any script or logic executed using the code runner.</li>
+        <li>You must not execute code designed to disrupt, harm, or bypass security controls on your device or network.</li>
+      </ul>
+
+      <h2>6. Acceptable Use for Note Sharing</h2>
+      <p>DevNotes provides an optional cloud sharing feature to publish read-only note snapshots via public web links. When using this feature, you agree not to publish or distribute:</p>
+      <ul>
+        <li>Content that is unlawful, defamatory, harassing, threatening, or fraudulent.</li>
+        <li>Malware, viruses, exploit payloads, or malicious scripts.</li>
+        <li>Unencrypted personal identifiable information, private secrets, API keys, or credentials belonging to others without authorization.</li>
+        <li>Materials that infringe upon any patent, trademark, copyright, or proprietary right.</li>
+      </ul>
+      <p>We reserve the right to remove any shared note link that violates these terms or is subject to a valid abuse report or legal request.</p>
+
+      <h2>7. Disclaimers of Warranties</h2>
+      <p>DevNotes is provided on an "AS IS" and "AS AVAILABLE" basis without warranties of any kind, whether express, implied, or statutory, including but not limited to the implied warranties of merchantability, fitness for a particular purpose, non-infringement, or data durability.</p>
+
+      <h2>8. Limitation of Liability</h2>
+      <p>To the maximum extent permitted by applicable law, in no event shall the creators, contributors, or maintainers of DevNotes be liable for any direct, indirect, incidental, special, consequential, or punitive damages, including loss of data, loss of profits, device interruption, or security incidents arising out of or related to your use of the application.</p>
+
+      <h2>9. Modifications to the Service and Terms</h2>
+      <p>We reserve the right to update, modify, or discontinue features of the application or revise these Terms at any time. Continued use of the application following any changes constitutes your acceptance of the updated Terms.</p>
+
+      <h2>10. Governing Law</h2>
+      <p>These Terms shall be governed by and construed in accordance with standard open-source and digital consumer principles without regard to conflict of law provisions.</p>
+    </main>
+
+    <footer class="legal-footer">
+      <div>&copy; 2026 DevNotes. Local-first developer notebook.</div>
+      <div style="display:flex;gap:16px">
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/">App Home</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

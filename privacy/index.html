@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — DevNotes</title>
+<meta name="description" content="Privacy Policy for DevNotes, a local-first developer notebook.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Source+Code+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23191919' stroke='%232f2f2f' stroke-width='4'/%3E%3Ctext x='50' y='68' font-size='46' font-weight='bold' fill='%23e6e6e5' text-anchor='middle' font-family='monospace'%3E%26lt;/%26gt;%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="/styles.css">
+<script>
+  (function() {
+    try {
+      const theme = localStorage.getItem('dn_theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch(e) {}
+  })();
+</script>
+<style>
+  html, body {
+    height: auto !important;
+    min-height: 100% !important;
+    overflow: auto !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+  }
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-primary, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh !important;
+    height: auto !important;
+    display: block !important;
+    overflow-y: auto !important;
+  }
+  .min-h-screen {
+    min-height: 100vh !important;
+    height: auto !important;
+    max-height: none !important;
+  }
+  .legal-wrapper {
+    max-width: 780px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+    box-sizing: border-box;
+    min-height: 100vh !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+  .legal-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 36px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .legal-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 700;
+    font-size: 17px;
+    letter-spacing: -0.02em;
+  }
+  .legal-brand-badge {
+    width: 28px;
+    height: 28px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mono, monospace);
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--brand);
+  }
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    border-radius: 6px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    text-decoration: none;
+    font-size: 12.5px;
+    font-weight: 500;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .back-btn:hover {
+    background: var(--bg3);
+    border-color: var(--border-subtle);
+  }
+  .legal-title-wrap {
+    margin-bottom: 32px;
+  }
+  .legal-title {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin: 0 0 8px;
+    color: var(--text);
+  }
+  .legal-meta {
+    font-size: 12.5px;
+    color: var(--text3);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .legal-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    background: var(--green-light);
+    color: var(--green);
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .legal-content h2 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 32px 0 12px;
+    color: var(--text);
+    letter-spacing: -0.015em;
+  }
+  .legal-content p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text2);
+    margin: 0 0 16px;
+  }
+  .legal-content ul {
+    margin: 0 0 20px 20px;
+    padding: 0;
+    color: var(--text2);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .legal-content li {
+    margin-bottom: 8px;
+  }
+  .legal-content strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+  .legal-content a {
+    color: var(--btn-primary-bg);
+    text-decoration: none;
+  }
+  .legal-content a:hover {
+    text-decoration: underline;
+  }
+  .highlight-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 24px 0;
+  }
+  .highlight-card h3 {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 6px;
+    color: var(--text);
+  }
+  .highlight-card p {
+    font-size: 13px;
+    line-height: 1.6;
+    margin: 0;
+    color: var(--text2);
+  }
+  .legal-footer {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--text3);
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .legal-footer a {
+    color: var(--text2);
+    text-decoration: none;
+  }
+  .legal-footer a:hover {
+    color: var(--text);
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body class="dark min-h-screen">
+  <div class="legal-wrapper min-h-screen">
+    <header class="legal-topbar">
+      <a href="/" class="legal-brand" title="Back to DevNotes">
+        <div class="legal-brand-badge">&lt;/&gt;</div>
+        <span>DevNotes</span>
+      </a>
+      <a href="/" class="back-btn">
+        <span>← Back to Notes</span>
+      </a>
+    </header>
+
+    <div class="legal-title-wrap">
+      <h1 class="legal-title">Privacy Policy</h1>
+      <div class="legal-meta">
+        <span>Last Updated: October 2026</span>
+        <span class="legal-badge">Local-First &amp; Zero Tracking</span>
+      </div>
+    </div>
+
+    <main class="legal-content">
+      <div class="highlight-card">
+        <h3>Summary in Plain English</h3>
+        <p>DevNotes is built with a local-first philosophy. Your notes, tags, folders, code snippets, and settings stay on your device in your browser's local storage. We do not track you, run analytics, use tracking cookies, or sell your data.</p>
+      </div>
+
+      <h2>1. Information We Do Not Collect</h2>
+      <p>Unlike cloud-hosted note applications, DevNotes is engineered to run client-side in your web browser. Under ordinary operation:</p>
+      <ul>
+        <li><strong>No User Account:</strong> You do not need to register, log in, or provide an email address, name, or phone number to use DevNotes.</li>
+        <li><strong>No Telemetry or Analytics:</strong> We do not track page views, click events, session recordings, device fingerprints, or usage statistics.</li>
+        <li><strong>No Advertising or Tracking Cookies:</strong> DevNotes does not deploy third-party advertising scripts or tracking pixels.</li>
+      </ul>
+
+      <h2>2. Local Storage and Data Persistence</h2>
+      <p>All data you create in DevNotes—including markdown notes, folder hierarchies, tags, word count targets, typography preferences, and UI states—is saved locally to your device using the browser's <code>localStorage</code> API.</p>
+      <ul>
+        <li>Your data resides exclusively on your computer or mobile device.</li>
+        <li>Clearing your browser storage or website data will remove your locally saved notes unless you have backed them up.</li>
+        <li>You retain complete control of your data and can export all notes at any time in standard JSON or Markdown formats.</li>
+      </ul>
+
+      <h2>3. Client-Side Note Encryption</h2>
+      <p>DevNotes provides end-to-end client-side encryption for sensitive notes using the Web Cryptography API (AES-GCM 256-bit with PBKDF2 key derivation and random salt):</p>
+      <ul>
+        <li>Encryption and decryption are performed entirely within your browser runtime.</li>
+        <li>Your encryption passphrase is never transmitted to any server or stored in persistent storage. It remains solely in volatile browser memory while unlocked.</li>
+        <li>If you forget your passphrase, encrypted notes cannot be decrypted or recovered by anyone, including the creators of DevNotes.</li>
+      </ul>
+
+      <h2>4. Optional Note Sharing Feature</h2>
+      <p>DevNotes includes an optional feature allowing you to generate public share links for individual notes:</p>
+      <ul>
+        <li><strong>User-Initiated Only:</strong> No note is ever sent to a server unless you explicitly click the "Share Note" button and choose to generate a public link.</li>
+        <li><strong>Data Transmitted:</strong> When you generate a share link, the title, content, language tag, and creation timestamp of that specific note are sent to our serverless Cloudflare Worker API to store the share payload.</li>
+        <li><strong>Deletion &amp; Revocation:</strong> You can delete or update any active share link at any time directly through the Share dialog inside the application.</li>
+        <li><strong>No Account Linking:</strong> Shared notes are identified by randomized cryptographic tokens and are not tied to your identity.</li>
+      </ul>
+
+      <h2>5. In-Browser Code Execution Sandbox</h2>
+      <p>DevNotes features an in-browser code runner for executing JavaScript and HTML:</p>
+      <ul>
+        <li>Code is executed locally within isolated client-side sandboxes (sandboxed iframes).</li>
+        <li>Your code and execution outputs are never forwarded to external remote code execution backends.</li>
+      </ul>
+
+      <h2>6. Offline Functionality and Service Workers</h2>
+      <p>DevNotes uses a Service Worker to cache static assets (HTML, CSS, JavaScript, icons, and fonts) on your device. This allows the application to load instantly and operate without an internet connection. The Service Worker does not transmit note data to any remote location.</p>
+
+      <h2>7. Third-Party Resources</h2>
+      <p>To provide high-quality typography and rendering, DevNotes requests fonts from Google Fonts. Google's privacy policy governs any requests made to their font delivery network.</p>
+
+      <h2>8. Data Portability and Deletion</h2>
+      <p>You can manage and export your data at any time:</p>
+      <ul>
+        <li><strong>Export All Notes:</strong> Use the "Export All Notes (JSON)" function in the sidebar to download an unencrypted archive of all your notes and folder structure.</li>
+        <li><strong>Export Individual Notes:</strong> Export any note as a Markdown (<code>.md</code>) file or printable PDF.</li>
+        <li><strong>Clear All Data:</strong> Use the "Reset Defaults" button in Settings or clear your browser site data to wipe all local notes.</li>
+      </ul>
+
+      <h2>9. Changes to This Privacy Policy</h2>
+      <p>We may update this Privacy Policy from time to time. Any changes will be reflected with a revised "Last Updated" date at the top of this page.</p>
+
+      <h2>10. Contact</h2>
+      <p>If you have any questions or feedback regarding this Privacy Policy, please open an issue on our GitHub repository or contact the project maintainers.</p>
+    </main>
+
+    <footer class="legal-footer">
+      <div>&copy; 2026 DevNotes. Local-first developer notebook.</div>
+      <div style="display:flex;gap:16px">
+        <a href="/terms">Terms of Service</a>
+        <a href="/">App Home</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
