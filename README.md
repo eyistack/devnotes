@@ -1,6 +1,5 @@
 # DevNotes
 
-## Overview
 DevNotes is a lightweight, offline-first developer notebook built for writing, organizing, and executing code snippets alongside technical notes. Designed with a clean, Notion-inspired dark and light interface, it combines rich markdown editing, bi-directional note linking, an in-browser code execution sandbox, client-side encryption, and visual graph mapping into a responsive web application. It runs entirely in the browser with local persistence and integrates with Cloudflare Workers for secure note sharing.
 
 ***Live Site:*** [https://devnotes.geekfolio.workers.dev](https://devnotes.geekfolio.workers.dev)
@@ -36,18 +35,27 @@ DevNotes is a lightweight, offline-first developer notebook built for writing, o
 
 ## Keyboard Shortcuts
 Open Command Palette: Cmd/Ctrl + K
+
 New Note: Cmd/Ctrl + N
+
 Save Note: Cmd/Ctrl + S
+
 Toggle Zen Mode: Cmd/Ctrl + Shift + Z
+
 Toggle Table of Contents: Cmd/Ctrl + Shift + T
+
 Knowledge Graph View: Cmd/Ctrl + G
+
 Export Note as PDF: Cmd/Ctrl + Shift + P
+
 Toggle Dark/Light Theme: Cmd/Ctrl + Shift + D
+
 Bold Text: Cmd/Ctrl + B
+
 Italic Text: Cmd/Ctrl + I
+
 Inline Code: Cmd/Ctrl + E
+
 Link Note: [[ + note title + ]]
+
 Close Active Modal: Escape
-```bash
-npm install
-npm run dev
